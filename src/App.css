@@ -1,0 +1,291 @@
+@import "tailwindcss";
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Enable hardware acceleration for smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Parkinsans', sans-serif;
+  background: #1d100d;
+}
+
+/* Sleek custom scrollbar */
+html::-webkit-scrollbar {
+  width: 10px;
+}
+html::-webkit-scrollbar-track {
+  background: #1d100d; 
+}
+html::-webkit-scrollbar-thumb {
+  background: #4b5563; 
+  border-radius: 5px;
+  border: 2px solid #1d100d; 
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: #6b7280; 
+}
+
+/* Performance-optimized animations */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(34, 211, 238, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.5); /* Reduced intensity */
+  }
+}
+
+.glow-border {
+  animation: glow 2s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+/* Optimized gradient text animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(-45deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+  will-change: background-position;
+}
+
+/* Lighter floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px); /* Reduced movement */
+  }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite; /* Increased duration */
+  will-change: transform;
+}
+
+/* Optimized pulse animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9; /* Reduced opacity change */
+    transform: scale(1.02); /* Reduced scale change */
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite; /* Increased duration */
+  will-change: transform, opacity;
+}
+
+/* Optimized selection styles */
+::selection {
+  background: rgba(34, 211, 238, 0.25); /* Reduced opacity */
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(34, 211, 238, 0.25);
+  color: white;
+}
+
+/* Focus styles with better performance */
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid rgba(34, 211, 238, 0.5);
+  outline-offset: 2px;
+  transition: outline 0.2s ease;
+}
+
+/* Optimized button styles */
+.btn-primary {
+  background: linear-gradient(45deg, #06b6d4, #3b82f6);
+  transition: all 0.2s ease; /* Reduced transition time */
+  will-change: transform, background, box-shadow;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #0891b2, #2563eb);
+  transform: translateY(-1px); /* Reduced movement */
+  box-shadow: 0 8px 20px rgba(34, 211, 238, 0.25); /* Reduced shadow */
+}
+
+/* Loading spinner with GPU acceleration */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+  will-change: transform;
+}
+
+/* Enhanced backdrop blur with better performance */
+.backdrop-blur-enhanced {
+  backdrop-filter: blur(10px) saturate(1.3); /* Reduced blur amount */
+  -webkit-backdrop-filter: blur(10px) saturate(1.3);
+  will-change: backdrop-filter;
+}
+
+/* Optimized card hover effects */
+.card-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Reduced duration */
+  will-change: transform, box-shadow;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px) rotateX(2deg); /* Reduced movement */
+  box-shadow: 
+    0 15px 20px -5px rgba(0, 0, 0, 0.25), /* Reduced shadow */
+    0 8px 8px -5px rgba(0, 0, 0, 0.04),
+    0 0 20px rgba(34, 211, 238, 0.15); /* Reduced glow */
+}
+
+/* Optimized text reveal animation */
+@keyframes text-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(15px); /* Reduced movement */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-reveal {
+  animation: text-reveal 0.5s ease-out forwards; /* Reduced duration */
+  will-change: transform, opacity;
+}
+
+/* Performance improvements for framer-motion */
+.motion-safe {
+  /* removed problematic css */
+}
+
+/* Enhanced performance for all motion elements */
+[data-framer-name] {
+  /* removed problematic css */
+}
+
+/* Smooth scrolling enhancement with better performance */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .float-animation,
+  .pulse-glow,
+  .glow-border,
+  .gradient-text {
+    animation: none !important;
+  }
+}
+
+/* Custom utilities for performance */
+.gpu-accelerated {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+}
+
+.smooth-transition {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Critical performance optimizations */
+.scroll-optimized {
+}
+
+/* Optimize all motion elements */
+.motion-div {
+}
+
+/* Reduce paint operations */
+.no-paint {
+}
+
+/* Optimize for 60fps scrolling */
+.scroll-smooth-60fps {
+}
+
+/* Line clamp utility for text truncation */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Improved focus indicators */
+.focus-ring {
+  focus-visible:outline-none;
+  focus-visible:ring-2;
+  focus-visible:ring-cyan-400;
+  focus-visible:ring-offset-2;
+  focus-visible:ring-offset-gray-800;
+}
+
+/* Container query support for better responsive design */
+@container (min-width: 768px) {
+  .container-md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container (min-width: 1024px) {
+  .container-lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  body {
+    color-scheme: dark;
+  }
+}
